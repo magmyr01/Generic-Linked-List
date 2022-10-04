@@ -11,10 +11,11 @@ typedef struct LinkedList
 } LinkedList;
 
 LinkedList *createList();
-LinkedList *AddFirst(LinkedList *list, void *data);
-LinkedList *AddLast(LinkedList *list, void *data);
-LinkedList *RemoveFirst(LinkedList *list);
-LinkedList *RemoveLast(LinkedList *list);
+void AddFirst(LinkedList *list, void *data);
+void AddLast(LinkedList *list, void *data);
+void RemoveFirst(LinkedList *list);
+void RemoveLast(LinkedList *list);
 void PrintList(LinkedList *list, void (*print)(void *));
+void Union(LinkedList *list1, LinkedList *list2);
 
 #endif /* __LINKEDLIST_H */

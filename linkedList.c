@@ -12,7 +12,7 @@ LinkedList *createList()
     return list;
 }
 
-LinkedList *AddFirst(LinkedList *list, void *data)
+void AddFirst(LinkedList *list, void *data)
 {
     node *newNode = createNode(data);
 
@@ -28,12 +28,10 @@ LinkedList *AddFirst(LinkedList *list, void *data)
         newNode->next = tmp;
         tmp->prev = list->first;
     }
-
     list->count++;
-    return list;
 }
 
-LinkedList *AddLast(LinkedList *list, void *data)
+void AddLast(LinkedList *list, void *data)
 {
     node *newN = createNode(data);
 
@@ -51,7 +49,7 @@ LinkedList *AddLast(LinkedList *list, void *data)
     list->count++;
 }
 
-LinkedList *RemoveFirst(LinkedList *list)
+void RemoveFirst(LinkedList *list)
 {
     if (list->count == 1)
     {
@@ -69,13 +67,12 @@ LinkedList *RemoveFirst(LinkedList *list)
         free(tmp);
         list->count--;
     }
-    return list;
 }
 
-LinkedList *RemoveLast(LinkedList *list)
+void RemoveLast(LinkedList *list)
 {
     if (list->count == 0)
-        return list;
+        return;
     else if (list->count == 1)
     {
         node *tmp = list->first;
@@ -89,6 +86,8 @@ LinkedList *RemoveLast(LinkedList *list)
         node *tmp = list->last;
         list->last = list->last->prev;
         list->last->next = NULL;
+        list->count--;
+        free(tmp);
     }
 }
 
@@ -102,4 +101,15 @@ void PrintList(LinkedList *list, void (*print)(void *))
         ptr = ptr->next;
     }
     putchar('\n');
+}
+
+void Union(LinkedList *list1, LinkedList *list2)
+{
+    if (list1->count == 0)
+        return;
+    if (list2->count == 0)
+        return;
+    list1->last->next = list2->first;
+    list2->first->prev = list1->last;
+    list1->count += list2->count;
 }

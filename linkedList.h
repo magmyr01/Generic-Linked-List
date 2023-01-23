@@ -17,5 +17,6 @@ void RemoveFirst(LinkedList *list);
 void RemoveLast(LinkedList *list);
 void PrintList(LinkedList *list, void (*print)(void *));
 void Union(LinkedList *list1, LinkedList *list2);
+LinkedList *Sort(LinkedList *list, void (*cmp)(void *, void *));
 
 #endif /* __LINKEDLIST_H */

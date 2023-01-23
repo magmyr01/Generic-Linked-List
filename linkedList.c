@@ -113,3 +113,31 @@ void Union(LinkedList *list1, LinkedList *list2)
     list2->first->prev = list1->last;
     list1->count += list2->count;
 }
+
+void Swap(node *item1, node *item2)
+{
+    if (item2->next != NULL && item1->prev != NULL)
+    {
+        item1->next = item2->next;
+        item2->next->prev = item1;
+        item1->prev->next = item2;
+        item2->prev = item1->prev;
+        item2->next = item1;
+        item1->prev = item2;
+    }
+}
+
+LinkedList *Sort(LinkedList *list, int (*cmp)(void *, void *))
+{
+    node **arrayOfList = malloc(list->count);
+    node *tmp = list->first;
+    int i = 0;
+
+    while (tmp != NULL)
+    {
+        arrayOfList[i] = tmp;
+        tmp = tmp->next;
+        i++;
+    }
+    int u = 9;
+}

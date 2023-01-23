@@ -2,6 +2,7 @@
 #include "linkedList.h"
 
 void printNumb(void *numb);
+int compareNumb(void *num1, void *num2);
 
 int main(int args, char *argv[])
 {
@@ -38,10 +39,25 @@ int main(int args, char *argv[])
 
     Union(lst, lst2);
     PrintList(lst, printNumb);
+
+    Sort(lst, (void *)compareNumb);
 }
 
 void printNumb(void *numb)
 {
     int *num = (int *)numb;
     printf("%d", *num);
+}
+
+int compareNumb(void *num1, void *num2)
+{
+    int *n1 = (int *)num1;
+    int *n2 = (int *)num2;
+
+    if (n1 > n2)
+        return 1;
+    else if (n1 == n2)
+        return 0;
+    else
+        return -1;
 }
